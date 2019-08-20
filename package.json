@@ -1,0 +1,23 @@
+{
+  "name": "node-q",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"nodemon index1.js\" ",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@elastic.io/amqp-rpc": "^2.1.0",
+    "amqp10": "^3.6.0",
+    "amqplib": "^0.5.5",
+    "concurrently": "^4.1.2",
+    "rhea": "^1.0.8"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
