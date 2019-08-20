@@ -5,7 +5,7 @@ let sent = 0;
 
 const total = 100;
 let GLOBAL_SCHEDULED_ITEMS = [];
-let GLOBAL_LISTENED_ITEMS = [];
+const GLOBAL_LISTENED_ITEMS = {};
 
 container.on("accepted", function(context) {
   if (++confirmed === total) {
@@ -40,14 +40,13 @@ container.on("sendable", function(context) {
   );
 
   GLOBAL_SCHEDULED_ITEMS = stillWaitingItems;
-
-  // sender.close();
 });
 
 container.on("message", function(context) {
   const address = context.receiver.options.source.address;
   const body = context.message.body;
   GLOBAL_LISTENED_ITEMS[address](body);
+
   //   console.log("received on ", address, body);
 
   context.delivery.accept();
