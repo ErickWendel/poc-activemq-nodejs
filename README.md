@@ -3,8 +3,8 @@
 This project is something to show how ActiveMQ would work with Node.js. 
 
 There are two files:
-- `sender` who sends 1000 messages per second to an Queue
-- `receiver` who receive each individual message.
+- `sender` who sends 200 messages per second to an Queue
+- `receiver` many Node.js copies whoes receive each individual message.
 
 
 ## Running
