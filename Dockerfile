@@ -14,4 +14,4 @@ RUN npm install --silent
 
 COPY . /src
 
-CMD npm run dev
+CMD npm run prod
