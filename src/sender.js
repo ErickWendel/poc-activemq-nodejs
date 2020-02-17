@@ -11,7 +11,7 @@ const faker = require('faker')
             await Queue.connect()
             console.log('sending messages at', topic)
             setInterval(async () => {
-                for(let i = 0; i < 1000; i++) {
+                for(let i = 0; i < 100; i++) {
                     await Queue.publishMessage(
                         {
                             name: `${faker.name.firstName()} ${faker.name.lastName()}`
