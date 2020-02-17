@@ -2,8 +2,8 @@ const defaultHost = "amqp://activemq:activemq@localhost"
 const host = process.env.QUEUE_URL || defaultHost
 const topic = process.env.TOPIC_EXAMPLE || "TOPIC_EXAMPLE"
 
-const queueHandler = require('./QueueHandler')
-const Queue = new queueHandler(host)
+const QueueHandler = require('./QueueHandler')
+const queue = new QueueHandler(host)
 const cluster = require('cluster');
 const numCPUs = require('os').cpus();
 
@@ -20,8 +20,8 @@ if (cluster.isMaster) {
 async function main(program) {
   try {
     console.log(`${program} - listening...`, topic)
-    await Queue.connect()
-    await Queue.subscribe(topic, msg => {
+    await queue.connect()
+    await queue.subscribe(topic, msg => {
       console.log(`${program} - **received: ${JSON.stringify(msg.content)}`)
     })
 
