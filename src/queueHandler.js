@@ -8,7 +8,11 @@ class QueueHandler {
     constructor(connectionString) {
         this.senders = {};
         this.receivers = {};
+        this.tentatives = 0
         this.connectionData = this._parseConnectionUrl(connectionString);
+    }
+    static sleep(time) {
+        return new Promise(r => setTimeout(r, time))
     }
     _parseConnectionUrl(connectionString) {
         const url = new URL(connectionString)
@@ -30,13 +34,26 @@ class QueueHandler {
         }
     }
     async connect() {
-        const data = this.connectionData;
-        const connection = new Connection({
-            ...data,
-            reconnect: false,
-        });
 
-        this.connection = await connection.open();
+        try {
+            const data = this.connectionData;
+            const connection = new Connection({
+                ...data,
+                reconnect: false,
+            });
+
+            this.connection = await connection.open();
+        } catch (error) {
+            this.tentatives += 1
+            if (this.tentatives > 3) {
+                console.log('maximum tentatives excedeed', this.tentatives)
+                throw error
+            }
+            console.log('trying to connect again, waiting a second')
+            await QueueHandler.sleep(1000)
+            return this.connect()
+        }
+
     }
 
 
