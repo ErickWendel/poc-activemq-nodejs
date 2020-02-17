@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prod": "concurrently \"npx pm2-runtime ./src/receiver.js\" \"npx pm2-runtime ./src/sender.js\"",
+    "prod": "concurrently \"npx node ./src/receiver.js\" \"npx node ./src/sender.js\"",
     "dev": "concurrently \"npx nodemon ./src/receiver.js\" \"npx nodemon ./src/sender.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,7 +20,6 @@
   },
   "devDependencies": {
     "concurrently": "^4.1.2",
-    "nodemon": "^1.19.4",
-    "pm2": "^4.2.3"
+    "nodemon": "^1.19.4"
   }
 }
