@@ -6,7 +6,9 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./:/src
-
+    environment:
+      QUEUE_URL: amqp://activemq:activemq@activemq
+      TOPIC_EXAMPLE: TOPIC_EXAMPLE
     links:
       - activemq
     depends_on:
@@ -14,11 +16,13 @@ services:
 
   activemq:
     container_name: activemq
-    image: webcenter/activemq:5.14.3
+    image: webcenter/activemq
     ports:
       - 8161:8161
       - 61616:61616
       - 61613:61613
+      - 5671:5671
+      - 5672:5672
     environment:
       ACTIVEMQ_ADMIN_LOGIN: activemq
       ACTIVEMQ_ADMIN_PASSWORD: activemq

@@ -4,20 +4,21 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"nodemon index1.js\" ",
+    "dev": "concurrently \"npx nodemon ./src/receiver.js\" \"npx nodemon ./src/sender.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@elastic.io/amqp-rpc": "^2.1.0",
-    "amqp10": "^3.6.0",
-    "amqplib": "^0.5.5",
-    "concurrently": "^4.1.2",
-    "rhea": "^1.0.8"
+    "ansi-regex": "^5.0.0",
+    "dotenv": "^8.2.0",
+    "faker": "^4.1.0",
+    "rhea-promise": "^1.0.0",
+    "uuid": "^3.4.0"
   },
   "devDependencies": {
-    "nodemon": "^1.19.1"
+    "concurrently": "^4.1.2",
+    "nodemon": "^1.19.4"
   }
 }
