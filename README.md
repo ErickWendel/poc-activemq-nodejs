@@ -8,7 +8,7 @@ There are two files:
 
 
 ## Running
-- Run `docker-compose up --build` and it'll install and configure 
+- Run `docker-compose up --build` and it'll install and configure the apps.
 
 ## Accessing ActiveMQ Dashboard
 
